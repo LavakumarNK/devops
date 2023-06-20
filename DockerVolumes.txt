@@ -54,4 +54,13 @@ and VMware vSphere storage.
 These are just a few of the many.
 
 Some of these volume drivers support different storage providers.
-For instance, REX-Ray storage driver can be used to provision storage on AWS EBS, S3.
+For instance, REX-Ray storage driver can be used to provision storage on AWS EBS, S3, EMC storage arrays like Isilon and ScaleIO,
+or Google Persistent Disk, or OpenStack Cinder.
+====================
+when you run a docker container you can specific voulme dirver by specifying it 
+example:
+docker run -it \
+      --name mysql
+      --voulme-driver rexray/ebs
+      --mount src=ebs-vol,target=/var/lib/mysql
+      mysql
