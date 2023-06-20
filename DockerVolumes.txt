@@ -1,0 +1,11 @@
+Volume: to persitsance data from container layer even after deleting the conatiner we use volumes
+There are two types of mountings:
+  -> Voulume mounting 
+      example:
+       To mount from Mysql docker container : docker run -v data_volume:/var/lib/mysql mysql
+       here in above example the data_volume is a folder in docker host at the path /var/lib/docker/volumes/data_volume
+       
+       
+  -> Bind mounting
+      docker run -v /data/mysql:/var/lib/mysql mysql 
+      here in above example the /data/mysql is a folder in docker host anywhere in the host.
