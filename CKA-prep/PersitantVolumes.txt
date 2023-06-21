@@ -1,1 +1,10 @@
-PV:
+PV: persistant volume
+PVC: Persistance volume claim 
+=====================================
+
+PV and PVC are two diffrent objects , PV's are created by Administartor where as PVC's are created by users 
+
+PV and PVC, There is a one to one relationship between PV and PVC, if there no PV available to PVC then PVC remain pending once the PV available the it will automatically bind with it.
+ 
+
+
