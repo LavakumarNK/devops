@@ -1,1 +1,66 @@
+Volume: to persitsance data from container layer even after deleting the conatiner we use volumes
+There are two types of mountings:
+  -> Voulume mounting 
+      example:
+       To mount from Mysql docker container : docker run -v data_volume:/var/lib/mysql mysql
+       here in above example the data_volume is a folder in docker host at the path /var/lib/docker/volumes/data_volume
+       
+       
+  -> Bind mounting
+      docker run -v /data/mysql:/var/lib/mysql mysql 
+      here in above example the /data/mysql is a folder in docker host anywhere in the host.
+      
+      Note:
+      using -v option in the above example is a old way 
+      --mount is the latest way 
+      docker run \ --mount type=bind,source=/data/mysql,target=/var/lib/mysql mysql
 
+
+Storage Drivers:
+================
+Dockers uses storage drivers to enable the layered architecture.
+Some common drivers are:
+AUFS
+ZFS
+BTRFS
+Device Mapper
+OverLay
+OverlAy2
+
+> Docker will choose the available storage driver automatically based on the opersating system.
+
+++++++++++++++++++++++
+
+To persist the storage we must create Volumes and voulmes are handled by voulme driver plugins 
+Note: voulme are not handled by storage server.
+
+The local volume plugin helps create a volume on the Docker host and store its data under the var/lib/docker volumes directory.
+
+There are many other volume driver plug-ins:
+============================================
+that allow you to create a volume on third party solutions
+like Azure file storage, 
+Convoy, 
+DigitalOcean,
+Block Storage, 
+Flocker, 
+Google Compute Persistent Disks,
+Cluster FS,
+NetApp, 
+REX-Ray, 
+Portworx,
+and VMware vSphere storage.
+
+These are just a few of the many.
+
+Some of these volume drivers support different storage providers.
+For instance, REX-Ray storage driver can be used to provision storage on AWS EBS, S3, EMC storage arrays like Isilon and ScaleIO,
+or Google Persistent Disk, or OpenStack Cinder.
+====================
+when you run a docker container you can specific voulme dirver by specifying it 
+example:
+docker run -it \
+      --name mysql
+      --voulme-driver rexray/ebs
+      --mount src=ebs-vol,target=/var/lib/mysql
+      mysql
