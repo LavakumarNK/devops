@@ -1,0 +1,21 @@
+This will be handy in the upcoming lectures.
+
+"ip link" is to list an modify interfaces on the host.
+
+"ip addr" command is to see the IP addresses assigned to those interfaces.
+
+"ip addr add" command is used to set IP addresses on the interfaces.
+
+Now, remember, changes made using these commands are only valid till a restart.
+
+If you want to persist these changes,
+
+you must set them in the etc/network/interfaces file.
+
+"ip route" or simply the route command is used to view the routing table.
+
+And "ip route add" command is used to add entries into the routing table.
+
+And finally, remember, the command to check if IP forwarding is enabled on a host,
+cat /proc/sys/net/ipv4/ip_forward
+1
