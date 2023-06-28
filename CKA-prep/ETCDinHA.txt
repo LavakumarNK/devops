@@ -1,0 +1,14 @@
+ETCD is distributed 
+
+Distributed  means:
+
+We can set up multiple ETCD servers and maitain the data.
+
+Reading data is not an issue.
+
+but writing the data into ETCD and copying to the remaining ETCD server is the challange here.
+
+for that it will elect a leader for writing and copying the data and which is the responsible. it will say the write complete only the other ETCD servers finishes copying.
+
+
+How to elect the Leder among the ETCD servers:
